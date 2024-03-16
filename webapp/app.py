@@ -16,13 +16,14 @@ models = data['model'].unique().tolist()
 min_year = data['year'].min()
 max_year = data['year'].max()
 engine_sizes = sorted(data['engineSize'].unique())
+mpg_values = sorted(data['mpg'].unique())
 
 
 @app.route('/')
 def home():
     print("Home route was accessed")
     return render_template('index.html', manufacturers=manufacturers, models=models, min_year=min_year,
-                           max_year=max_year, engine_sizes=engine_sizes)
+                           max_year=max_year, engine_sizes=engine_sizes, mpg_values=mpg_values)
 
 
 @app.route('/predict', methods=['POST'])
@@ -37,7 +38,8 @@ def predict():
         'transmission': [request.form['transmission']],
         'mileage': [int(request.form.get('mileage', 0))],
         'fuelType': [request.form['fuelType']],
-        'engineSize': [float(request.form['engineSize'])]
+        'engineSize': [float(request.form['engineSize'])],
+        'mpg': [float(request.form['mpg'])]
     }
     input_df = pd.DataFrame(form_data)
 
@@ -72,7 +74,7 @@ def predict():
     predicted_price = model.predict(input_encoded_final)
 
     return render_template('index.html', manufacturers=manufacturers, models=models, min_year=min_year,
-                           max_year=max_year, engine_sizes=engine_sizes, prediction=round(predicted_price[0], 2), year=request.form['year'], manufacturer=request.form['manufacturer'],
+                           max_year=max_year, engine_sizes=engine_sizes, mpg_values=mpg_values, prediction=round(predicted_price[0], 2), year=request.form['year'], manufacturer=request.form['manufacturer'],
                        model=request.form['model'], mileage=request.form['mileage'])
 
 

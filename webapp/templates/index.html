@@ -64,6 +64,14 @@
         {% endfor %}
     </select><br>
 
+    <label for="mpg">Fuel Economy (MPG):</label>
+    <select id="mpg" name="mpg" required>
+        <option value="" disabled selected></option>
+        {% for mpg in mpg_values %}
+        <option value="{{ mpg }}">{{ mpg }}</option>
+        {% endfor %}
+    </select><br>
+
     <input type="submit" value="Predict Price">
 </form>
 
