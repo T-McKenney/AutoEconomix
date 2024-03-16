@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AutoEconomix Car Price Prediction</title>
+</head>
+<body>
+<h1>Welcome to AutoEconomix Car Price Predictor</h1>
+<p>Fill in the details about your car below to get an estimated market price.</p>
+
+<form action="/predict" method="post">
+
+    <label for="manufacturer">Manufacturer:</label>
+    <select id="manufacturer" name="manufacturer" required>
+        <option value="" disabled selected> </option>
+        {% for manufacturer in manufacturers %}
+        <option value="{{ manufacturer }}">{{ manufacturer }}</option>
+        {% endfor %}
+    </select><br>
+
+    <label for="model">Model:</label>
+    <select id="model" name="model" required>
+        <option value="" disabled selected> </option>
+        {% for model in models %}
+        <option value="{{ model }}">{{ model }}</option>
+        {% endfor %}
+    </select><br>
+
+    <label for="year">Year:</label>
+    <select id="year" name="year" required>
+        <option value="" disabled selected> </option>
+        {% for year in range(min_year, max_year + 1) %}
+        <option value="{{ year }}">{{ year }}</option>
+        {% endfor %}
+    </select><br>
+
+    <label for="transmission">Transmission:</label>
+    <select id="transmission" name="transmission" required>
+        <option value="" disabled selected> </option>
+        <option value="Manual">Manual</option>
+        <option value="Automatic">Automatic</option>
+        <option value="Semi-Auto">Semi-Auto</option>
+        <option value="Other">Other</option>
+    </select><br>
+
+    <label for="mileage">Mileage:</label>
+    <input type="number" id="mileage" name="mileage" min="0" max="300000" placeholder="0" required><br>
+
+    <label for="fuelType">Fuel Type:</label>
+    <select id="fuelType" name="fuelType" required>
+        <option value="" disabled selected> </option>
+        <option value="Diesel">Diesel</option>
+        <option value="Petrol">Petrol</option>
+        <option value="Electric">Electric</option>
+        <option value="Hybrid">Hybrid</option>
+        <option value="Other">Other</option>
+    </select><br>
+
+    <label for="engineSize">Engine Size (Liters):</label>
+    <select id="engineSize" name="engineSize" required>
+        <option value="" disabled selected> </option>
+        {% for size in engine_sizes %}
+        <option value="{{ size }}">{{ size }}</option>
+        {% endfor %}
+    </select><br>
+
+    <input type="submit" value="Predict Price">
+</form>
+
+<div id="prediction">
+
+</div>
+</body>
+</html>
