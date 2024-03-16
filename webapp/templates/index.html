@@ -12,7 +12,7 @@
 
     <label for="manufacturer">Manufacturer:</label>
     <select id="manufacturer" name="manufacturer" required>
-        <option value="" disabled selected> </option>
+        <option value="" disabled selected></option>
         {% for manufacturer in manufacturers %}
         <option value="{{ manufacturer }}">{{ manufacturer }}</option>
         {% endfor %}
@@ -20,7 +20,7 @@
 
     <label for="model">Model:</label>
     <select id="model" name="model" required>
-        <option value="" disabled selected> </option>
+        <option value="" disabled selected></option>
         {% for model in models %}
         <option value="{{ model }}">{{ model }}</option>
         {% endfor %}
@@ -28,7 +28,7 @@
 
     <label for="year">Year:</label>
     <select id="year" name="year" required>
-        <option value="" disabled selected> </option>
+        <option value="" disabled selected></option>
         {% for year in range(min_year, max_year + 1) %}
         <option value="{{ year }}">{{ year }}</option>
         {% endfor %}
@@ -36,7 +36,7 @@
 
     <label for="transmission">Transmission:</label>
     <select id="transmission" name="transmission" required>
-        <option value="" disabled selected> </option>
+        <option value="" disabled selected></option>
         <option value="Manual">Manual</option>
         <option value="Automatic">Automatic</option>
         <option value="Semi-Auto">Semi-Auto</option>
@@ -48,7 +48,7 @@
 
     <label for="fuelType">Fuel Type:</label>
     <select id="fuelType" name="fuelType" required>
-        <option value="" disabled selected> </option>
+        <option value="" disabled selected></option>
         <option value="Diesel">Diesel</option>
         <option value="Petrol">Petrol</option>
         <option value="Electric">Electric</option>
@@ -58,7 +58,7 @@
 
     <label for="engineSize">Engine Size (Liters):</label>
     <select id="engineSize" name="engineSize" required>
-        <option value="" disabled selected> </option>
+        <option value="" disabled selected></option>
         {% for size in engine_sizes %}
         <option value="{{ size }}">{{ size }}</option>
         {% endfor %}
@@ -67,8 +67,15 @@
     <input type="submit" value="Predict Price">
 </form>
 
-<div id="prediction">
 
+</div>
+
+<div>
+    <div id="prediction">
+        {% if prediction %}
+        <h3>Estimated Price for a {{ year }} {{ manufacturer }} {{ model }} with {{ mileage }} miles: ${{ prediction }}</h3>
+        {% endif %}
+    </div>
 </div>
 </body>
 </html>
