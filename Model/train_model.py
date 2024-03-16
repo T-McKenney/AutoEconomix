@@ -36,13 +36,40 @@ predictions = model.predict(X_test)
 error = mean_absolute_error(y_test, predictions)
 print(f'Mean Absolute Error: {error}')
 
-# Visualize actual vs predicted prices
+# Visualization 1: actual vs predicted prices
 plt.figure(figsize=(10, 6))
 sns.scatterplot(x=y_test, y=predictions)
 plt.xlabel('Actual Prices')
 plt.ylabel('Predicted Prices')
 plt.title('Actual vs Predicted Car Prices')
 plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], color='red', lw=2)
+plt.show()
+
+# Visualization 2: Histogram of car prices
+original_data = pd.read_csv('CarsData.csv')
+
+plt.figure(figsize=(10, 6))
+sns.histplot(data['price'], kde=True)
+plt.title('Distribution of Car Prices')
+plt.xlabel('Price')
+plt.ylabel('Frequency')
+plt.show()
+
+# Visualization 3: Scatter plot of mileage vs. Price
+plt.figure(figsize=(10, 6))
+sns.scatterplot(x='mileage', y='price', data=original_data)
+plt.title('Mileage vs. Price of Cars')
+plt.xlabel('Mileage')
+plt.ylabel('Price')
+plt.show()
+
+# Visualization 4: Bar chart of Average Car Prices by Manufacturer
+plt.figure(figsize=(12, 8))
+average_prices = original_data.groupby('Manufacturer')['price'].mean().sort_values()
+sns.barplot(x=average_prices, y=average_prices.index)
+plt.title('Average Car Prices by Manufacturer')
+plt.xlabel('Average Price')
+plt.ylabel('Manufacturer')
 plt.show()
 
 # Save the trained model
