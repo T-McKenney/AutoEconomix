@@ -43,7 +43,8 @@ plt.xlabel('Actual Prices')
 plt.ylabel('Predicted Prices')
 plt.title('Actual vs Predicted Car Prices')
 plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], color='red', lw=2)
-plt.show()
+plt.savefig('webapp/static/actual_vs_predicted_prices.png')
+plt.close()
 
 # Visualization 2: Histogram of car prices
 original_data = pd.read_csv('CarsData.csv')
@@ -53,7 +54,8 @@ sns.histplot(data['price'], kde=True)
 plt.title('Distribution of Car Prices')
 plt.xlabel('Price')
 plt.ylabel('Frequency')
-plt.show()
+plt.savefig('webapp/static/histogram_of_car_prices.png')
+plt.close()
 
 # Visualization 3: Scatter plot of mileage vs. Price
 plt.figure(figsize=(10, 6))
@@ -61,7 +63,8 @@ sns.scatterplot(x='mileage', y='price', data=original_data)
 plt.title('Mileage vs. Price of Cars')
 plt.xlabel('Mileage')
 plt.ylabel('Price')
-plt.show()
+plt.savefig('webapp/static/scatterplot_mileage_vs_price.png')
+plt.close()
 
 # Visualization 4: Bar chart of Average Car Prices by Manufacturer
 plt.figure(figsize=(12, 8))
@@ -70,7 +73,8 @@ sns.barplot(x=average_prices, y=average_prices.index)
 plt.title('Average Car Prices by Manufacturer')
 plt.xlabel('Average Price')
 plt.ylabel('Manufacturer')
-plt.show()
+plt.savefig('webapp/static/bar_chart_average_prices_by_manufacturer.png')  # Save the plot
+plt.close()
 
 # Save the trained model
 with open('model/model.pkl', 'wb') as file:
