@@ -11,7 +11,7 @@ These instructions aim to direct you through the process of downloading, setting
 
 What you need to use the application:
 
-- Python 3.12
+- Python 3.11
 - pip (Python package manager)
 
 ### Installing
