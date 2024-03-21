@@ -77,5 +77,5 @@ plt.savefig('../webapp/static/bar_chart_average_prices_by_manufacturer.png')  # 
 plt.close()
 
 # Save the trained model
-with open('Model/model.pkl', 'wb') as file:
+with open('model.pkl', 'wb') as file:
     pickle.dump(model, file)
