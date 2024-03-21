@@ -7,7 +7,7 @@ import seaborn as sns
 import pickle
 
 # Load the dataset
-data = pd.read_csv('CarsData.csv')
+data = pd.read_csv('../CarsData.csv')
 
 print('Running the model')
 
@@ -47,7 +47,7 @@ plt.savefig('webapp/static/actual_vs_predicted_prices.png')
 plt.close()
 
 # Visualization 2: Histogram of car prices
-original_data = pd.read_csv('CarsData.csv')
+original_data = pd.read_csv('../CarsData.csv')
 
 plt.figure(figsize=(10, 6))
 sns.histplot(data['price'], kde=True)
