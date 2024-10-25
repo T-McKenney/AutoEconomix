@@ -1,5 +1,7 @@
 # AutoEconomix Car Price Prediction Application
 
+![Demo](./demo.gif)
+
 ## Overview
 AutoEconomix Car Price Prediction is a Flask-based web application designed to accurately predict car prices using various attributes like make, model, year, mileage, and more. Leveraging  machine learning algorithms, this application offers a user-friendly interface for quick and accurate car valuation estimates.
 
